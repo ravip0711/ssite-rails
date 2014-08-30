@@ -1,0 +1,24 @@
+  [1m[36m (155.5ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (42.8ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (15.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateUsers (20140827221412)
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36m (119.0ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "first_name" character varying(255), "last_name" character varying(255), "gender" character varying(255), "birthday" timestamp, "address" character varying(255), "email" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (21.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140827221412"]]
+  [1m[36m (16.1ms)[0m  [1mCOMMIT[0m
+Migrating to CreateFollowers (20140827221454)
+  [1m[35m (15.6ms)[0m  BEGIN
+  [1m[36m (13.1ms)[0m  [1mCREATE TABLE "followers" ("id" serial primary key, "user_id" integer, "store_id" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (9.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140827221454"]]
+  [1m[36m (1.2ms)[0m  [1mCOMMIT[0m
+Migrating to CreateStores (20140827221517)
+  [1m[35m (15.0ms)[0m  BEGIN
+  [1m[36m (4.1ms)[0m  [1mCREATE TABLE "stores" ("id" serial primary key, "name" character varying(255), "type" character varying(255), "target_gender" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140827221517"]]
+  [1m[36m (0.8ms)[0m  [1mCOMMIT[0m
+Migrating to CreatePromotions (20140827221619)
+  [1m[35m (15.4ms)[0m  BEGIN
+  [1m[36m (4.4ms)[0m  [1mCREATE TABLE "promotions" ("id" serial primary key, "title" character varying(255), "description" text, "promo_level" integer, "start_date" timestamp, "end_date" timestamp, "store_id" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140827221619"]]
+  [1m[36m (1.7ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.6ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
